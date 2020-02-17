@@ -2,9 +2,7 @@ package com.itcast.controller;
 import com.itcast.entity.SeckillGoods;
 import com.itcast.service.SeckillGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -27,5 +25,8 @@ public class seckillGoodsController {
     public List<SeckillGoods> findList(){
         return seckillGoodsService.findList(new Date(),new Date());
     }
-
+    @GetMapping("/getRedis")
+    public List<SeckillGoods> getSeckillGoodsList(@RequestParam String time){
+       return seckillGoodsService.getList(time);
+    }
 }
